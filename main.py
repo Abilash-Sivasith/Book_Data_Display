@@ -27,6 +27,14 @@ def graph_per_genre_unread():
     """graph unread books based on main genre"""
     pass
 
+
+def books_per_year():
+    """graphs books read per year"""
+    pass
+
+
 def main():
     """main loop with what data you want to display"""
     pass
+
+
