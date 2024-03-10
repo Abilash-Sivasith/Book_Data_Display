@@ -5,15 +5,39 @@ Created By:
 Abilash Sivasith
 """
 
-EXCEL_FILENAME = ""
+import pandas as pd
+
+EXCEL_FILENAME = "books_I_want_to_read.xlsx"
 
 def open_excel():
     """opens the excell file"""
-    pass
+    excel_file = pd.read_excel(EXCEL_FILENAME)
+    return excel_file
+
+
+
+
 
 def workable_file():
     """turns the provided excell file into a worksable format"""
-    pass
+    excel_file_to_read = open_excel()
+    
+    for col_tittle in excel_file_to_read:
+        print(col_tittle)
+    
+    
+    '''book_title = excel_file_to_read['Tittle']
+    # Sets the author as a tuple
+    author_1 = excel_file_to_read['Author 1']
+    author_2 = excel_file_to_read['Author 2']
+    if author_2 == 'NaN':
+        author = (author_1)
+    else:
+        author = (author_1, author_2)
+    # line_num_as_int = excel_file[excel_file['Tittle'] == "Atomic Habits"].index[0]
+    '''
+    
+workable_file()
 
 def graph_per_genre():
     """graph books based on main genre"""
