@@ -17,9 +17,6 @@ def open_excel():
     return excel_file
 
 
-
-
-
 def workable_file():
     """turns the provided excell file into a worksable format"""
     excel_file_to_read = open_excel()
@@ -39,8 +36,20 @@ def workable_file():
 
 def graph_per_genre():
     """graph books based on main genre"""
-    pass
+    book_data_list = workable_file()
+    dict_of_genre = {}
+    for data in book_data_list:
+        title = data[0]
+        genre = data[2][0]
+        if genre not in dict_of_genre:
+            dict_of_genre[genre] = [title]
+        else:
+            dict_of_genre[genre].append(title)
+            
 
+    return dict_of_genre
+
+pprint(graph_per_genre())
 def graph_per_genre_read():
     """graph read books based on main genre"""
     pass
