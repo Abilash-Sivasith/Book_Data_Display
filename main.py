@@ -7,6 +7,7 @@ Abilash Sivasith
 
 import pandas as pd
 from pprint import pprint
+import matplotlib.pyplot as plt
 
 EXCEL_FILENAME = "books_I_want_to_read.xlsx"
 
@@ -33,25 +34,8 @@ def workable_file():
         book_year_read = row['Year Read']
         tuple_of_book_info = (book_name, book_authors, book_genre, book_read, book_owned, book_year_read)
         book_info_list.append(tuple_of_book_info)
-    pprint(book_info_list)
-        
+    return book_info_list
 
-            
-            
-    
-    
-    '''book_title = excel_file_to_read['Tittle']
-    # Sets the author as a tuple
-    author_1 = excel_file_to_read['Author 1']
-    author_2 = excel_file_to_read['Author 2']
-    if author_2 == 'NaN':
-        author = (author_1)
-    else:
-        author = (author_1, author_2)
-    # line_num_as_int = excel_file[excel_file['Tittle'] == "Atomic Habits"].index[0]
-    '''
-    
-workable_file()
 
 def graph_per_genre():
     """graph books based on main genre"""
