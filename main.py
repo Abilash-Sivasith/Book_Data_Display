@@ -42,14 +42,29 @@ def graph_per_genre():
         title = data[0]
         genre = data[2][0]
         if genre not in dict_of_genre:
-            dict_of_genre[genre] = [title]
+            dict_of_genre[genre] = 1
         else:
-            dict_of_genre[genre].append(title)
-            
-
+            dict_of_genre[genre] += 1
+    
+    print(dict_of_genre)
+    genre_as_list = list(dict_of_genre.keys())
+    num_book_in_genre = list(dict_of_genre.values())
+    fig, ax = plt.subplots(figsize= (10,5))
+    ax.bar(genre_as_list, num_book_in_genre, color = 'blue', width= 0.4)
+    plt.xticks(rotation=45, ha="right") 
+    plt.xlabel("Genres")
+    plt.ylabel("# Books in Genre")
+    plt.title("Books Per Genre")
+    
+    plt.show()
+    
     return dict_of_genre
 
-pprint(graph_per_genre())
+print(graph_per_genre())
+    
+
+            
+
 def graph_per_genre_read():
     """graph read books based on main genre"""
     pass
