@@ -8,6 +8,7 @@ Abilash Sivasith
 import pandas as pd
 from pprint import pprint
 import matplotlib.pyplot as plt
+import math
 
 EXCEL_FILENAME = "books_I_want_to_read.xlsx"
 
@@ -58,22 +59,63 @@ def graph_per_genre():
     plt.title("Books Per Genre")
     plt.show()
     
-    return dict_of_genre
-
             
-
 def graph_per_genre_read():
     """graph read books based on main genre"""
-    pass
+    book_data_list = workable_file()
+    dict_of_genre = dict()
+    dict_fiction_non_fiction = {"Fiction": 0 , "Non-Fiction": 0}
+    for data in book_data_list:
+        genre = data[2][0]
+        read_status = data[5]
+        if isinstance(read_status, (int, float)) and not math.isnan(read_status):
 
+            # sorting per genre
+            if genre not in dict_of_genre:
+                dict_of_genre[genre] = 1
+            else:
+                dict_of_genre[genre] += 1
+            
+            # sorting by fiction and non-fiction
+            if genre == "fiction":
+                dict_fiction_non_fiction['Fiction'] += 1
+            else:
+                dict_fiction_non_fiction['Non-Fiction'] += 1
+                
+    # Graphing Read Books Per Genre
+    genre_as_list = list(dict_of_genre.keys())
+    num_book_in_genre = list(dict_of_genre.values())
+    fig, ax = plt.subplots(figsize= (10,7))
+    ax.bar(genre_as_list, num_book_in_genre, color = 'blue', width= 0.4)
+    plt.xticks(rotation=45, ha="right") 
+    plt.xlabel("Genres")
+    plt.ylabel("# Books in Genre")
+    plt.title("Read Books Per Genre")
+    plt.show()
+    
+    # Graphing Fiction Books against Non-Fiction books
+    fiction_vs_non_fiction = list(dict_fiction_non_fiction.keys())
+    num_books_in_fiction_vs_non_fiction = list(dict_fiction_non_fiction.values())
+    fig, ax = plt.subplots(figsize= (10,7))
+    ax.bar(fiction_vs_non_fiction, num_books_in_fiction_vs_non_fiction, color = 'blue', width= 0.4)
+    plt.xticks(rotation=45, ha="right") 
+    plt.ylabel("# Books in Genre")
+    plt.title("Read Books Split By Fiction and Non-Fiction")
+    plt.show()
+    
+            
 
 def books_per_year():
-    """graphs books read per year"""
+    """graphs the books read based on the year"""
     pass
+
 
 
 def main():
     """main loop with what data you want to display"""
-    pass
+    #graph_per_genre()
+    graph_per_genre_read()
+
+main()
 
 
