@@ -39,7 +39,6 @@ def graph_per_genre():
     book_data_list = workable_file()
     dict_of_genre = {}
     for data in book_data_list:
-        title = data[0]
         genre = data[2][0]
         if genre not in dict_of_genre:
             dict_of_genre[genre] = 1
@@ -53,7 +52,6 @@ def graph_per_genre():
     plt.xlabel("Genres")
     plt.ylabel("# Books in Genre")
     plt.title("Books Per Genre")
-    
     plt.show()
     
     return dict_of_genre
