@@ -107,14 +107,41 @@ def graph_per_genre_read():
 
 def books_per_year():
     """graphs the books read based on the year"""
-    pass
+    book_data_list = workable_file()
+    dict_of_read_book_per_year = dict()
+    for data in book_data_list:
+        genre = data[2][0]
+        year_read = data[5]
+        if isinstance(year_read, (int, float)) and not math.isnan(year_read):
+            year_read = int(year_read)
+            if year_read not in dict_of_read_book_per_year:
+                dict_of_read_book_per_year[year_read] = 1
+            else:
+                dict_of_read_book_per_year[year_read] += 1
+    
+            
+    # Graphing books read in each year
+    years = list(dict_of_read_book_per_year.keys())
+    num_books_in_year = list(dict_of_read_book_per_year.values())
+    plt.figure(figsize=(10, 7))
+    plt.plot(years, num_books_in_year, marker='o', linestyle='-')
+    plt.xlabel("Year") 
+    plt.ylabel("# Books Read")  
+    plt.title("Books Read per Year")
+    plt.grid(True) 
+    plt.ylim(0, max(num_books_in_year) + 2) 
+    plt.yticks(range(0, max(num_books_in_year) + 5, 1))
+    plt.xticks(range(min(years) , max(years) + 1, 1))
+    plt.show()
+    
 
 
 
 def main():
     """main loop with what data you want to display"""
     #graph_per_genre()
-    graph_per_genre_read()
+    #graph_per_genre_read()
+    books_per_year()
 
 main()
 
