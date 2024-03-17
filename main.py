@@ -110,7 +110,6 @@ def books_per_year():
     book_data_list = workable_file()
     dict_of_read_book_per_year = dict()
     for data in book_data_list:
-        genre = data[2][0]
         year_read = data[5]
         if isinstance(year_read, (int, float)) and not math.isnan(year_read):
             year_read = int(year_read)
@@ -141,7 +140,7 @@ def main():
     """main loop with what data you want to display"""
     #graph_per_genre()
     #graph_per_genre_read()
-    books_per_year()
+    #books_per_year()
 
 main()
 
