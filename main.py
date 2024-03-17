@@ -44,8 +44,12 @@ def graph_per_genre():
             dict_of_genre[genre] = 1
         else:
             dict_of_genre[genre] += 1
-        genre_as_list = list(dict_of_genre.keys())
+            
+     
+    # Graphing       
+    genre_as_list = list(dict_of_genre.keys())
     num_book_in_genre = list(dict_of_genre.values())
+    
     fig, ax = plt.subplots(figsize= (10,5))
     ax.bar(genre_as_list, num_book_in_genre, color = 'blue', width= 0.4)
     plt.xticks(rotation=45, ha="right") 
