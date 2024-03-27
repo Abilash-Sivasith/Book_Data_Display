@@ -138,9 +138,9 @@ def books_per_year():
 
 def main():
     """main loop with what data you want to display"""
-    #graph_per_genre()
-    #graph_per_genre_read()
-    #books_per_year()
+    graph_per_genre()
+    graph_per_genre_read()
+    books_per_year()
 
 main()
 
