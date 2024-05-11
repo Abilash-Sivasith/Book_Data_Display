@@ -24,7 +24,7 @@ def workable_file():
     book_info_list = []
     i = 0 
     for index, row in excel_file_to_read.iterrows():
-        book_name = row['Tittle']
+        book_name = row['Title']
         book_authors = (row['Author 1'], row['Author 2'])
         book_genre = (row['Genre 1'], row['Genre 2'])
         book_read = row['Read']
@@ -48,7 +48,7 @@ def graph_per_genre():
             
      
     # Graphing       
-    genre_as_list = list(dict_of_genre.keys())
+    genre_as_list = [str(genre) for genre in dict_of_genre.keys()]
     num_book_in_genre = list(dict_of_genre.values())
     
     fig, ax = plt.subplots(figsize= (10,5))
@@ -140,7 +140,6 @@ def main():
     """main loop with what data you want to display"""
     graph_per_genre()
     graph_per_genre_read()
-    books_per_year()
 
 main()
 
